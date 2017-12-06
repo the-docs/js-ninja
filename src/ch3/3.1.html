@@ -17,61 +17,55 @@
     function isNimble() { return true; }
 
     assert(typeof window.isNimble === 'function',
-          'isNimble() 정의됨');
+      'isNimble() 정의됨');
     assert(isNimble.name === 'isNimble',
-          'isNimble()에는 이름이 있음'); 
+      'isNimble()에는 이름이 있음'); 
 
-    var canFly = function() { return true; };
+    var canFly = function () { return true; };
 
     assert(typeof window.canFly === 'function',
-          'canFly() 정의됨');
+      'canFly() 정의됨');
     assert(canFly.name === 'canFly',
-          'canFly()에는 이름이 있음');
+      'canFly()에는 이름이 있음');
 
-    window.isDeadly = function() { return true; };
+    window.isDeadly = function () { return true; };
     assert(typeof window.isDeadly === 'function',
-          'isDeadly() 정의됨');
+      'isDeadly() 정의됨');
     assert(isDeadly.name === '',
-          'isDeadly()에는 이름이 없음');
+      'isDeadly()에는 이름이 없음');
 
     function outer() {
       assert(typeof inner === 'function',
-            'inner 함수가 정의된 위치 앞쪽에서 inner()는 유효함.');
+        'inner 함수가 정의된 위치 앞쪽에서 inner()는 유효함.');
 
       function inner() {}
 
       assert(typeof inner === 'function',
-            'inner 함수가 정의된 위치 뒤쪽에서 inner()는 유효함.');
+        'inner 함수가 정의된 위치 뒤쪽에서 inner()는 유효함.');
       assert(window.inner === undefined,
-            '전역 유효 범위에 inner()는 없음.');
+        '전역 유효 범위에 inner()는 없음.');
     }
 
     outer();
 
     assert(window.inner === undefined,
-          'inner()는 전역 유효 범위에 없음.');
+      'inner()는 전역 유효 범위에 없음.');
 
     window.wieldsSword = function swingsSword() { return true; };
     assert(typeof wieldsSword === 'function',
-          'wieldsSword() 호출 가능함.');
+      'wieldsSword() 호출 가능함.');
     assert(typeof swingsSword === 'undefined',
-          'swingsSword() 호출 불가능함.');
+      'swingsSword() 호출 불가능함.');
     assert(window.wieldsSword.name === 'swingsSword',
-          'wieldsSword의 실제 이름은 swingsSword이다.');
+      'wieldsSword의 실제 이름은 swingsSword이다.');
 
-    var outerName = function innerName() {
-      assert(typeof outerName === 'function',
-            'outerName');
-      assert(typeof innerName === 'function',
-            'innerName');
-      return true;
-    };
+    var outerName = function innerName() { return true; };
     assert(typeof outerName === 'function',
-          'outerName() 호출 가능함.');
+      'outerName() 호출 가능함.');
     assert(typeof innerName === 'undefined',
-          'innerName() 호출 불가능함.');
+      'innerName() 호출 불가능함.');
     assert(outerName.name === 'innerName',
-          'outerName의 이름은 innerName');
+      'outerName의 이름은 innerName');
     outerName();
 
   </script>
