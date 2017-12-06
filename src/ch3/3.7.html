@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 3.7</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function fn1() {}
+    // fn1.name === 'fn1'
+    assert(fn1.name === 'fn1',
+      'fn1.name 값은 fn1');
+
+    var fn2 = function() {};
+    // fn2.name === 'fn2'
+    assert(fn2.name === 'fn2',
+      'fn2.name 값은 fn2');
+
+    var fn3 = function fn3Inner() {};
+    // fn3.name === 'fn3Inner'
+    assert(fn3.name === 'fn3Inner',
+      'fn3.name 값은 fn3Inner');
+
+    window.fn4 = function() {};
+    // fn4.name === ''
+    assert(fn4.name === '',
+      'fn4.name 값은 \'\'');
+
+    window.fn5 = function fn5Inner() {};
+    // fn5.name === 'fn5Inner'
+    assert(fn5.name === 'fn5Inner',
+      'fn5.name 값은 fn5Inner');
+
+    var obj1 = {
+      fn6: function() {}
+    };
+    // fn6.name === 'fn6'
+    assert(obj1.fn6.name === 'fn6',
+      'obj1.fn6.name 값은 fn6');
+
+    var obj2 = {
+      fn7: function fn7Inner() {}
+    };
+    // fn7.name === 'fn7Inner'
+    assert(obj2.fn7.name === 'fn7Inner',
+      'obj2.fn7.name 값은 fn7Inner');
+
+  </script>
+</body>
+</html>
