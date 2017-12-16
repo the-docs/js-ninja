@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 5.11</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    Fucntion.prototype.curry = function() {
+      var fn = this;
+      var args = Array.prototype.slice.call(arguments);
+
+      return function() {
+        return fn.apply(this, args.concat(Array.prototype.slice.call(arguments)));
+      };
+    };
+  </script>
+</body>
+</html>
