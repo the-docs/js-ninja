@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 5.8</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <button id="test">Click me!</button>
+  <script src="assert.js"></script>
+  <script>
+    function bind(context, name) {
+      return function() {
+        return context[name].apply(context, arguments);
+      };
+    }
+
+    var button = {
+      clicked: false,
+
+      click: function() {
+        this.clicked = true;
+        assert(button.clicked, '버튼이 클릭됨');
+        console.log(this);
+      }
+    };
+
+    var elem = document.getElementById('test');
+    elem.addEventListener('click', bind(button, 'click'), false);
+  </script>
+</body>
+</html>
