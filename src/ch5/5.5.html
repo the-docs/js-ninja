@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 5.5</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; }
+  </style>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+  <ul id="results"></ul>
+  <div id="testSubject">hi</div>
+  <button type="button" id="testButton">Go!</button>
+  <script src="assert.js"></script>
+  <script>
+    jQuery('#testButton').click(function() {
+      var elem$ = jQuery('#testSubject');
+
+      elem$.html('로딩 중...');
+
+      jQuery.ajax({
+        url: 'test.html',
+        success: function(html) {
+          assert(elem$, '콜백 함수의 클로저를 통해 elem$ 변수를 참조할 수 있다.');
+          elem$.html(html);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

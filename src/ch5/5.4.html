@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 5.4</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function Ninja() {
+      var feints = 0;
+
+      this.getFeints = function() {
+        return feints;
+      };
+
+      this.feint = function() {
+        feints++;
+      };
+    }
+
+    var ninja = new Ninja();
+
+    ninja.feint();
+
+    assert(ninja.getFeints() == 1, '생성자 함수 내부에 있는 feint 변수의 값은 얻어올 수 있다.');
+    assert(ninja.feints === undefined, '하지만 private 변수에는 직접 전급할 수 없다.');
+  </script>
+</body>
+</html>
