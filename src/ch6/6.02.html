@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.02</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function Ninja() {
+      this.swung = false;
+      this.swingSword = function() {
+        return !this.swung;
+      };
+    }
+
+    Ninja.prototype.swingSword = function() {
+      return true;
+    };
+
+    var ninja = new Ninja();
+    assert(ninja.swingSword(), '프로토타입 메서드 대신 인스턴스 메서드가 호출된다.');
+  </script>
+</body>
+</html>
