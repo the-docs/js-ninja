@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.05</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function Ninja(){}
+
+    var ninja = new Ninja();
+
+    assert(typeof ninja === 'object', '인스턴스의 타입은 object이다.');
+
+    assert(ninja instanceof Ninja, 'instanceof를 사용하여 생성자를 식별함.');
+
+    assert(ninja.constructor === Ninja, 'Ninja 함수를 사용하여 ninja 객체를 만들었다.');
+
+  </script>
+</body>
+</html>
