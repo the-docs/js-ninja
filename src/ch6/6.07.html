@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.07</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function Person() {}
+    Person.prototype.dance = function() {};
+
+    function Ninja() {}
+    Ninja.prototype = { dance: Person.prototype.dance };
+
+    var ninja = new Ninja();
+
+    assert(ninja instanceof Ninja, 'ninja는 Ninja 프로토타입의 기능을 물려받았다.');;
+    assert(ninja instanceof Person, '... 그리고 Person 프로토타입의 기능을 물려받았다.');
+    assert(ninja instanceof Object, '... 그리고 Ojbect 프로토타입의 기능을 물려받았다.');
+  </script>
+</body>
+</html>
