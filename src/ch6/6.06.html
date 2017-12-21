@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.06</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function Ninja(){}
+
+    var ninja = new Ninja();
+
+    var ninja2 = new ninja.constructor();
+
+    assert(ninja2 instanceof Ninja, '닌자가 맞다.');
+
+    assert(ninja !== ninja2, '하지만 같은 닌자는 아니다.');
+
+  </script>
+</body>
+</html>
