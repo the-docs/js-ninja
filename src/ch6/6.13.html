@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.13</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    Number.prototype.add = function(num) {
+      return this + num;
+    };
+
+    var n = 5;
+    assert(n.add(3) === 8, '변수 값이 숫자라면 문제없이 작동한다.');
+    assert((5).add(3) === 8, '숫자가 괄호로 둘러쌓여 있을 때도 작동한다.');
+    assert(5.add(3) === 8, '단순한 형태의 리터럴은 어떻게 될까?.');
+  </script>
+</body>
+</html>
