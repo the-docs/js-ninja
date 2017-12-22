@@ -18,13 +18,14 @@
     Person.prototype.dance = function() {};
 
     function Ninja() {}
-    Ninja.prototype = { dance: Person.prototype.dance };
+    Ninja.prototype = new Person();
 
     var ninja = new Ninja();
 
     assert(ninja instanceof Ninja, 'ninja는 Ninja 프로토타입의 기능을 물려받았다.');;
     assert(ninja instanceof Person, '... 그리고 Person 프로토타입의 기능을 물려받았다.');
     assert(ninja instanceof Object, '... 그리고 Ojbect 프로토타입의 기능을 물려받았다.');
+    assert(typeof ninja.dance == 'function', '... 그리고 ninja는 춤출 수 있다.');
   </script>
 </body>
 </html>
