@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.15</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function MyArray() {}
+    MyArray.prototype.length = 0;
+
+    (function() {
+      var methods = ['push', 'pop', 'shift', 'unshift', 'slice', 'splice', 'join'];
+
+      for (var i = 0; i < methods.length; i++) {
+        (function(name) {
+          MyArray.prototype[name] = function() {
+            return Array.prototype[name].apply(this, arguments);
+          }
+        })(methods[i]);
+      }
+    })();
+
+    var mine = new MyArray();
+    mine.push(1, 2, 3);
+
+    assert(mine.length === 3, '모든 항목은 하위 클래스를 사용하여 만든 배열에 존재한다.');
+    assert(!(mine instanceof Array), '그러나 MyArray는 Array를 상속하지는 않았다.');
+  </script>
+</body>
+</html>
