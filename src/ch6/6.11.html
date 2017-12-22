@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.11</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    Object.prototype.keys = function() {
+      var keys = [];
+      for (var p in this) {
+        keys.push(p);
+      }
+      return keys;
+    };
+
+    var obj = { a: 1, b: 2, c: 3 };
+
+    assert(obj.keys().length === 3, '이 객체는 세 개의 프로퍼티가 있다.');
+  </script>
+</body>
+</html>
