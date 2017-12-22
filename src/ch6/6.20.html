@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.20</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    var Person = Object.subClass({
+      init: function(isDancing) {
+        this.dancing = isDancing;
+      },
+      dance: function() {
+        return this.dancing;
+      }
+    });
+
+    var Ninja = Person.subClass({
+      init: function() {
+        this._super(false);
+      },
+      dance: function() {
+        return this._super();
+      },
+      swingSword: function() {
+        return true;
+      }
+    });
+
+    var person = new Person(true);
+    assert(person.dance(), 'person은 춤을 춘다.');
+
+    var ninja = new Ninja();
+    assert(ninja.swingSword(), '칼을 휘두른다.')
+    assert(!ninja.dance(), 'ninja는 춤을 추지 않는다.');
+
+    assert(person instanceof Person, 'person은 Person이다.');
+    assert(ninja instanceof Ninja && ninja instanceof Person, 'ninja는 Ninja이고 Person이다.');
+  </script>
+</body>
+</html>
