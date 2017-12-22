@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test 6.19</title>
+  <style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <ul id="results"></ul>
+  <script src="assert.js"></script>
+  <script>
+    function User(first, last) {
+      if (!(this instanceof arguments.callee)) {
+        return new User(first, last);
+      }
+      this.name = first + ' ' + last;
+    }
+
+    var name = '루키아';
+
+    var user = User('이치고', '쿠로사키');
+
+    assert(name === '루키아', '이름을 루키아로 설정하였다.');
+    assert(user instanceof User, 'User 인스턴스가 만들어졌다.');
+    assert(user.name === '이치고 쿠로사키', 'User의 이름을 올바르게 할당하였다.');
+  </script>
+</body>
+</html>
